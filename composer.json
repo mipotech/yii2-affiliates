@@ -1,0 +1,21 @@
+{
+    "name": "mipotech/yii2-affiliates",
+    "description": "A Yii2 extension that provides a library of affiliate functionality",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maya Sandovsky",
+            "email": "maya@mipo.co.il"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "mipotech\\affiliates\\": ""
+        }
+    }
+}
