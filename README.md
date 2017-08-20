@@ -1,31 +1,67 @@
-Yii2 Affiliate Extension
-========================
-A Yii2 extension that provides a library of affiliate functionality
+# Yii2 Cardcom SDK
 
-Installation
-------------
+This package provides a simple way to integrate with the Cardcom API.
 
+
+## Installation
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
-Either run
+First add this entry to the `repositories` section of your composer.json:
 
 ```
-php composer.phar require --prefer-dist mipotech/yii2-affiliates "*"
+"repositories": [{
+    ...
+},{
+    "type": "git",
+    "url": "https://github.com/mipotech/yii2-affiliates.git"
+},{
+    ...
+}],
 ```
 
-or add
+then add this line:
 
 ```
-"mipotech/yii2-affiliates": "*"
+"mipotech/yii2-affiliates": "dev-master",
 ```
 
-to the require section of your `composer.json` file.
+to the `require` section of your `composer.json` file and perform a composer update.
 
+## Configuration
 
-Usage
------
-
-Once the extension is installed, simply use it in your code by  :
+Add the following section to the params file (@app/config/params.php):
 
 ```php
-<?= \mipotech\affiliates\AutoloadExample::widget(); ?>```
+return [
+    ...
+    
+    'affiliates' => [
+        /* Required settings */
+        'class' => 'mipotech\affiliates\Affiliates',
+        'affiliateClass' => '\app\models\user\User', //require
+        'affiliateIdAttribute' => 'aff_id', //require
+        'affiliateExpiredDays' =>  30,
+        'affiliateIdUrlParam' => 'ref',
+        'campaignIdUrlParam' => 'camp', 
+    ],
+    ...
+];
+```
+
+That's it. The package is set up and ready to go.
+
+## Usage
+
+To create an instance of the SDK:
+
+```php
+	//Fixme
+```
+
+### Initiate a new low profile transaction
+
+Standard:
+
+```php
+	// Fixme
+```
