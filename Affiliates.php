@@ -22,6 +22,7 @@ class Affiliates extends Component implements BootstrapInterface
     public $affiliateIdUrlParam = 'ref';
 	public $campaignIdUrlParam = 'camp';
 	public $affiliateExpiredDays = 30;
+	public $affiliateLinkClickedCallBack = null;
 	private $affiliate=null;
 	private $affiliateId=null;
 	
@@ -72,6 +73,11 @@ class Affiliates extends Component implements BootstrapInterface
 			$data->type = AffiliateStatisticDataTypes::CLICK;
 			$data->created_at = strtotime('now');
 			$data->save();
+			
+			// Click Callback
+			if(is_callable($this->affiliateLinkClickedCallBack)) {
+				call_user_func($this->affiliateLinkClickedCallBack, $data);
+			}
 		}
     }
 	
@@ -90,6 +96,14 @@ class Affiliates extends Component implements BootstrapInterface
 		}
 		
 		return $this->affiliate; //Yii::$app->affiliates->get()
+	}
+	
+	public function getCamp()
+	{
+		$reqCookies = Yii::$app->request->cookies;
+		$campId = $reqCookies->getValue($this->campaignIdUrlParam, null);
+		
+		return $campId; //Yii::$app->affiliates->get()
 	}
 	
 	public function clicksCount($params = [])
